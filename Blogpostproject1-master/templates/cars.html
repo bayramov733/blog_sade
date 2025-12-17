@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Maşınların Siyahısı</h1>
+
+    <form method="GET" action="{% url 'cars' %}">
+    <input type="text" name="q" placeholder="Maşın axtar..." />
+    <button type="submit">🔍</button>
+    </form>
+
+
+    <table>
+        <tr>
+            <th>Maşının Markası</th>
+            <th>Maşının Adı</th>
+            <th>İstehsal Tarixi</th>
+        </tr>
+        {% for car in cars %}
+        <tr>
+            <td>{{ car.surname }}</td>
+            <td>{{ car.name }}</td>
+            <td>{{ car.date|date:"d/m/Y"  }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}
